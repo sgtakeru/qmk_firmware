@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------.             ,------+------+------+------+------+------|
  * |      |      |      |Aud on|Audoff|AGnorm|             |AGswap|      |BL TOG|BL STP|      |      |
  * |------+------+------+------+------+------+-------------+------+------+------+------+------+------|
- * |Qwerty|Colemk|Dvorak|      |      |      |      |      |      |      |      |      |      |      |
+ * |Qwerty|      |      |      |      |      |      |      |      |      |      |      |      |      |
  * `-------------+------+------+------+------+------+------+------+------+------+------+-------------'
  *               |      |      |      |      |      |      |      |      |      |      |
  *               `---------------------------------------------------------------------'
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                     KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12, \
   _______, RESET  , RGB_TOG, RGB_MOD, RGB_HUD, RGB_HUI,                   RGB_SAD, RGB_SAI, RGB_VAD, RGB_VAI, _______, KC_BSPC, \
   _______, _______, _______, AU_ON,   AU_OFF,  AG_NORM,                   AG_SWAP, _______, BL_TOGG, BL_STEP, _______, _______, \
-  QWERTY,  COLEMAK, DVORAK,  _______, _______, _______, _______, _______, RGB_M_B, RGB_M_R, RGB_M_SW, RGB_M_SN, RGB_M_K, RGB_M_X, \
+  QWERTY,  _______, _______, _______, _______, _______, _______, _______, RGB_M_B, RGB_M_R, RGB_M_SW, RGB_M_SN, RGB_M_K, RGB_M_X, \
                     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______\
 )
 
