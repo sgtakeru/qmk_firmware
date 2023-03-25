@@ -15,24 +15,31 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CONFIG_USER_H
-#define CONFIG_USER_H
+#pragma once
 
-#include "config_common.h"
 
-#define USE_SERIAL
+
+//#include "config_common.h"
+
+//#define USE_SERIAL
 
 /* Select hand configuration */
 
 // #define MASTER_LEFT
 // #define MASTER_RIGHT
-#define EE_HANDS
+//#define EE_HANDS
 
 /* #undef RGBLED_NUM */
-#define RGBLIGHT_ANIMATIONS
-/* #define RGBLED_NUM 12 */
+#define RGBLIGHT_EFFECT_ALTERNATINS
+#define RGBLIGHT_EFFECT_BREATHING
+#define RGBLIGHT_EFFECT_KNIGHT
+#define RGBLIGHT_EFFECT_RAINBOW_MOOD
+#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+#define RGBLIGHT_EFFECT_SNAKE
+#define RGBLIGHT_EFFECT_STATIC_GRADIENT
+#define RGBLIGHT_EFFECT_TWINKLE
+#define RGBLED_NUM 18
 /* #define RGBLIGHT_HUE_STEP 8 */
 /* #define RGBLIGHT_SAT_STEP 8 */
 /* #define RGBLIGHT_VAL_STEP 8 */
-
-#endif
+#define GRAVE_ESC_GUI_OVERRIDE
