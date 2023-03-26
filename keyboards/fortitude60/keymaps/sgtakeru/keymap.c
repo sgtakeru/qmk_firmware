@@ -164,6 +164,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
+static bool lower_pressed = false;
+static bool raise_pressed = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
@@ -182,6 +184,50 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       set_single_persistent_default_layer(_DVORAK);
     }
     return false;
+  case LOWER:
+    if (record->event.pressed) {
+      lower_pressed = true;
+
+      layer_on(_LOWER);
+      update_tri_layer(_LOWER, _RAISE, _ADJUST);
+    } else {
+      layer_off(_LOWER);
+      update_tri_layer(_LOWER, _RAISE, _ADJUST);
+
+      if (lower_pressed) {
+        register_code(KC_LNG2);
+        unregister_code(KC_LNG2);
+      }
+      lower_pressed = false;
+    }
+    return false;
+    break;
+
+  case RAISE:
+    if (record->event.pressed) {
+      raise_pressed = true;
+
+      layer_on(_RAISE);
+      update_tri_layer(_LOWER, _RAISE, _ADJUST);
+    } else {
+       layer_off(_RAISE);
+       update_tri_layer(_LOWER, _RAISE, _ADJUST);
+
+        if (raise_pressed) {
+          register_code(KC_LNG1);
+          unregister_code(KC_LNG1);
+        }
+        raise_pressed = false;
+    }
+    return false;
+    break;
+
+  default:
+    if (record->event.pressed) {
+      lower_pressed = false;
+      raise_pressed = false;
+    }
+    break;
   }
   return true;
 }
