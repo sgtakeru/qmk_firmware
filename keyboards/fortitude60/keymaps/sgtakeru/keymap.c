@@ -49,7 +49,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                   KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC, \
   KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                   KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT, \
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B, KC_LBRC, KC_RBRC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT , \
-         KC_LGUI, LOPT_T(KC_LNG2),   LOWER,  KC_SPC,  KC_ENT,  KC_SPC, KC_SPC, RAISE, ROPT_T(KC_LNG1), KC_BSLS \
+         KC_LGUI, KC_LALT,  LOWER,  KC_SPC,  KC_ENT,  KC_SPC, KC_SPC, RAISE, KC_RALT,    KC_BSLS \
 ),
 
 /* Colemak
@@ -164,9 +164,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
   return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
-static bool lower_pressed = false;
-static bool raise_pressed = false;
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
   case QWERTY:
@@ -184,50 +181,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       set_single_persistent_default_layer(_DVORAK);
     }
     return false;
-  case LOWER:
-    if (record->event.pressed) {
-      lower_pressed = true;
-
-      layer_on(_LOWER);
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-    } else {
-      layer_off(_LOWER);
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-
-      if (lower_pressed) {
-        register_code(KC_LNG2);
-        unregister_code(KC_LNG2);
-      }
-      lower_pressed = false;
-    }
-    return false;
-    break;
-
-  case RAISE:
-    if (record->event.pressed) {
-      raise_pressed = true;
-
-      layer_on(_RAISE);
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-    } else {
-       layer_off(_RAISE);
-       update_tri_layer(_LOWER, _RAISE, _ADJUST);
-
-        if (raise_pressed) {
-          register_code(KC_LNG1);
-          unregister_code(KC_LNG1);
-        }
-        raise_pressed = false;
-    }
-    return false;
-    break;
-
-  default:
-    if (record->event.pressed) {
-      lower_pressed = false;
-      raise_pressed = false;
-    }
-    break;
   }
   return true;
 }
